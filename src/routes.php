@@ -1,9 +1,15 @@
 <?php
 if (Request::segment(1) != 'admin' && Request::segment(1) != 'api') {
 
-    Route::bind('categories', function ($slug) {
-        $categRepo = App::make('TypiCMS\Modules\Categories\Repositories\CategoryInterface');
-        return $categRepo->bySlug($slug);
+    Route::bind('categories', function ($value) {
+        $query = TypiCMS\Modules\Categories\Models\Category::select('categories.id AS id', 'slug', 'locale', 'status')
+            ->join('category_translations', 'categories.id', '=', 'category_translations.category_id')
+            ->where('slug', $value)
+            ->where('locale', App::getLocale());
+        if (! Input::get('preview')) {
+            $query->where('status', 1);
+        }
+        return $query->firstOrFail();
     });
 
 } else {
@@ -27,7 +33,7 @@ Route::group(
     }
 );
 
-Route::group(array('prefix'=>'api'), function() {
+Route::group(array('prefix'=>'api/v1'), function() {
     Route::resource(
         'categories',
         'TypiCMS\Modules\Categories\Controllers\ApiController'
