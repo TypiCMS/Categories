@@ -26,7 +26,7 @@ class PublicController extends BasePublicController
 
         $models = $this->repository->getAll();
 
-        $this->layout->content = View::make('categories.public.index')
+        return view('categories.public.index')
             ->with('models', $models);
     }
 
@@ -41,7 +41,7 @@ class PublicController extends BasePublicController
 
         $this->title['parent'] = $model->title;
 
-        $this->layout->content = View::make('categories.public.show')
+        return view('categories.public.show')
             ->with('model', $model);
     }
 }
