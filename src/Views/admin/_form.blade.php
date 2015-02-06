@@ -32,7 +32,7 @@
                         <button class="btn btn-default btn-slug @if($errors->has($lang.'.slug'))btn-danger @endif" type="button">@lang('validation.attributes.generate')</button>
                     </span>
                 </div>
-                {{ $errors->first($lang.'.slug', '<p class="help-block">:message</p>') }}
+                {!! $errors->first($lang.'.slug', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
         {!! BootForm::checkbox(trans('labels.online'), $lang.'[status]') !!}

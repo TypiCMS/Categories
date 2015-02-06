@@ -33,9 +33,6 @@ Route::group(
     }
 );
 
-Route::group(array('prefix'=>'api'), function() {
-    Route::resource(
-        'categories',
-        'TypiCMS\Modules\Categories\Controllers\ApiController'
-    );
+Route::group(['prefix'=>'api'], function() {
+    Route::resource('categories', 'ApiController');
 });
