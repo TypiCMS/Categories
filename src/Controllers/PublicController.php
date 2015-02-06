@@ -1,7 +1,7 @@
 <?php
 namespace TypiCMS\Modules\Categories\Controllers;
 
-use Str;
+use Illuminate\Support\Str;
 use View;
 use TypiCMS\Controllers\BasePublicController;
 use TypiCMS\Modules\Categories\Repositories\CategoryInterface;

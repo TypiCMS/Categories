@@ -1,5 +1,5 @@
 @section('js')
-    {{ HTML::script(asset('js/admin/form.js')) }}
+    <script src="{{ asset('js/admin/form.js') }}"></script>
 @stop
 
 @section('otherSideLink')
@@ -9,7 +9,7 @@
 
 @include('core::admin._buttons-form')
 
-{{ BootForm::hidden('id'); }}
+{!! BootForm::hidden('id') !!}
 
 @include('core::admin._image-fieldset', ['field' => 'image'])
 
@@ -22,7 +22,7 @@
     <div class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{ $lang }}">
         <div class="row">
             <div class="col-md-6 form-group">
-                {{ BootForm::text(trans('labels.title'), $lang.'[title]') }}
+                {!! BootForm::text(trans('labels.title'), $lang.'[title]') !!}
             </div>
             <div class="col-md-6 form-group @if($errors->has($lang.'.slug'))has-error @endif">
                 {{ Form::label($lang.'[slug]', trans('validation.attributes.slug')) }}
@@ -35,7 +35,7 @@
                 {{ $errors->first($lang.'.slug', '<p class="help-block">:message</p>') }}
             </div>
         </div>
-        {{ BootForm::checkbox(trans('labels.online'), $lang.'[status]') }}
+        {!! BootForm::checkbox(trans('labels.online'), $lang.'[status]') !!}
     </div>
 
     @endforeach

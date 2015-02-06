@@ -1,30 +1,21 @@
 <?php
 namespace TypiCMS\Modules\Categories\Providers;
 
-use Lang;
-use View;
 use Config;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
-
-// Models
+use Illuminate\Support\ServiceProvider;
+use Lang;
 use TypiCMS\Modules\Categories\Models\Category;
 use TypiCMS\Modules\Categories\Models\CategoryTranslation;
-
-// Repo
-use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
-
-// Cache
 use TypiCMS\Modules\Categories\Repositories\CacheDecorator;
-use TypiCMS\Services\Cache\LaravelCache;
-
-// Form
+use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
 use TypiCMS\Modules\Categories\Services\Form\CategoryForm;
 use TypiCMS\Modules\Categories\Services\Form\CategoryFormLaravelValidator;
-
-// Observers
-use TypiCMS\Observers\SlugObserver;
 use TypiCMS\Observers\FileObserver;
+use TypiCMS\Observers\SlugObserver;
+use TypiCMS\Services\Cache\LaravelCache;
+use View;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -35,9 +26,19 @@ class ModuleProvider extends ServiceProvider
         require __DIR__ . '/../routes.php';
 
         // Add dirs
-        View::addLocation(__DIR__ . '/../Views');
-        Lang::addNamespace('categories', __DIR__ . '/../lang');
-        Config::addNamespace('categories', __DIR__ . '/../config');
+        View::addNamespace('categories', __DIR__ . '/../views/');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'categories');
+        $this->publishes([
+            __DIR__ . '/../config/' => config_path('typicms/categories'),
+        ], 'config');
+        $this->publishes([
+            __DIR__ . '/../migrations/' => base_path('/database/migrations'),
+        ], 'migrations');
+
+        AliasLoader::getInstance()->alias(
+            'Categories',
+            'TypiCMS\Modules\Categories\Facades\Facade'
+        );
 
         // Observers
         CategoryTranslation::observe(new SlugObserver);
@@ -69,10 +70,6 @@ class ModuleProvider extends ServiceProvider
                 new CategoryFormLaravelValidator($app['validator']),
                 $app->make('TypiCMS\Modules\Categories\Repositories\CategoryInterface')
             );
-        });
-
-        $app->before(function ($request, $response) {
-            require __DIR__ . '/../breadcrumbs.php';
         });
 
     }

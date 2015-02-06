@@ -43,6 +43,9 @@ class Category extends Base
      */
     public function getPublicUri($preview = false, $index = false, $lang = null)
     {
+        if (! $this->hasTranslation($lang)) {
+            return null;
+        }
         $lang = $lang ? : App::getlocale() ;
         $parameters = [$this->translate($lang)->slug];
         if (! $preview && ! $this->translate($lang)->status) {
