@@ -20,8 +20,8 @@
     @foreach ($locales as $lang)
 
     <div class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{ $lang }}">
-        @include('core::admin._title-and-slug')
-        {!! BootForm::checkbox(trans('labels.online'), $lang.'[status]') !!}
+        @include('core::form._title-and-slug')
+        {!! BootForm::checkbox(trans('validation.attributes.online'), $lang.'[status]') !!}
     </div>
 
     @endforeach

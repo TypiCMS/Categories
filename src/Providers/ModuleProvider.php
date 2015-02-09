@@ -25,9 +25,9 @@ class ModuleProvider extends ServiceProvider
         // Add dirs
         View::addNamespace('categories', __DIR__ . '/../views/');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'categories');
-        $this->publishes([
-            __DIR__ . '/../config/' => config_path('typicms/categories'),
-        ], 'config');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/config.php', 'typicms.categories'
+        );
         $this->publishes([
             __DIR__ . '/../migrations/' => base_path('/database/migrations'),
         ], 'migrations');
@@ -44,6 +44,11 @@ class ModuleProvider extends ServiceProvider
 
     public function register()
     {
+
+        config([
+            '/config/categories/order.php',
+            '/config/categories/admin.php',
+        ]);
 
         $app = $this->app;
 
