@@ -1,9 +1,9 @@
 <?php
-namespace TypiCMS\Modules\Categories\Controllers;
+namespace TypiCMS\Modules\Categories\Http\Controllers;
 
 use Illuminate\Support\Str;
 use View;
-use TypiCMS\Controllers\BasePublicController;
+use TypiCMS\Http\Controllers\BasePublicController;
 use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
 
 class PublicController extends BasePublicController

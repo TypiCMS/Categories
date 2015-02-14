@@ -24,7 +24,7 @@ if (Request::segment(1) != 'admin' && Request::segment(1) != 'api') {
 
 Route::group(
     array(
-        'namespace' => 'TypiCMS\Modules\Categories\Controllers',
+        'namespace' => 'TypiCMS\Modules\Categories\Http\Controllers',
         'prefix'    => 'admin',
     ),
     function () {

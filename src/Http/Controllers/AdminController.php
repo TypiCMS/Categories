@@ -1,7 +1,7 @@
 <?php
-namespace TypiCMS\Modules\Categories\Controllers;
+namespace TypiCMS\Modules\Categories\Http\Controllers;
 
-use TypiCMS\Controllers\AdminSimpleController;
+use TypiCMS\Http\Controllers\AdminSimpleController;
 use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
 use TypiCMS\Modules\Categories\Services\Form\CategoryForm;
 
