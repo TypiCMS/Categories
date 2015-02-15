@@ -10,8 +10,6 @@ use TypiCMS\Modules\Categories\Models\Category;
 use TypiCMS\Modules\Categories\Models\CategoryTranslation;
 use TypiCMS\Modules\Categories\Repositories\CacheDecorator;
 use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
-use TypiCMS\Modules\Categories\Services\Form\CategoryForm;
-use TypiCMS\Modules\Categories\Services\Form\CategoryFormLaravelValidator;
 use TypiCMS\Observers\FileObserver;
 use TypiCMS\Observers\SlugObserver;
 use TypiCMS\Services\Cache\LaravelCache;
@@ -70,13 +68,6 @@ class ModuleProvider extends ServiceProvider
             $laravelCache = new LaravelCache($app['cache'], 'categories', 10);
 
             return new CacheDecorator($repository, $laravelCache);
-        });
-
-        $app->bind('TypiCMS\Modules\Categories\Services\Form\CategoryForm', function (Application $app) {
-            return new CategoryForm(
-                new CategoryFormLaravelValidator($app['validator']),
-                $app->make('TypiCMS\Modules\Categories\Repositories\CategoryInterface')
-            );
         });
 
     }
