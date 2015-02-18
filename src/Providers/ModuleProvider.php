@@ -43,11 +43,6 @@ class ModuleProvider extends ServiceProvider
     public function register()
     {
 
-        config([
-            '/config/categories/order.php',
-            '/config/categories/admin.php',
-        ]);
-
         $app = $this->app;
 
         /**
