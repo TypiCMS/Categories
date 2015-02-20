@@ -1,6 +1,6 @@
 <?php
 return array(
-    'name' => 'categories',
+    'name' => 'Categories',
     'categories' => 'category|categories',
     'New'  => 'New category',
     'Edit' => 'Edit category',
