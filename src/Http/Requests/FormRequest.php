@@ -7,7 +7,9 @@ class FormRequest extends AbstractFormRequest {
 
     public function rules()
     {
-        $rules = [];
+        $rules = [
+            'image' => 'image|max:2000|image_size:>=500',
+        ];
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale . '.slug'] = [
                 'required_with:' . $locale . '.title',

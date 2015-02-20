@@ -19,6 +19,7 @@ class Category extends Base
 
     protected $fillable = array(
         'position',
+        'image',
         // Translatable columns
         'title',
         'slug',
@@ -34,6 +35,15 @@ class Category extends Base
         'title',
         'slug',
         'status',
+    );
+
+    /**
+     * Columns that are file.
+     *
+     * @var array
+     */
+    public $attachments = array(
+        'image',
     );
 
     /**
