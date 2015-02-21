@@ -1,11 +1,11 @@
 <?php
 namespace TypiCMS\Modules\Categories\Http\Controllers;
 
-use TypiCMS\Http\Controllers\AdminSimpleController;
+use TypiCMS\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Categories\Http\Requests\FormRequest;
 use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
 
-class AdminController extends AdminSimpleController
+class AdminController extends BaseAdminController
 {
 
     public function __construct(CategoryInterface $category)
