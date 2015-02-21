@@ -20,9 +20,12 @@ class ModuleProvider extends ServiceProvider
 
     public function boot()
     {
-        // Add dirs
-        View::addNamespace('categories', __DIR__ . '/../views/');
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'categories');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'categories');
+        $this->publishes([
+            __DIR__ . '/../views' => base_path('resources/views/vendor/categories'),
+        ], 'views');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'categories');
         $this->mergeConfigFrom(
             __DIR__ . '/../config/config.php', 'typicms.categories'
         );
