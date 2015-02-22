@@ -3,15 +3,11 @@ use TypiCMS\Modules\Categories\Models\Category;
 
 class CategoriesControllerTest extends TestCase
 {
-    public function tearDown()
-    {
-        Mockery::close();
-    }
 
     public function testAdminIndex()
     {
-        $this->get('admin/categories');
-        $this->assertTrue($this->client->getResponse()->isOk());
+        $response = $this->call('GET', 'admin/categories');
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testStoreFails()
