@@ -18,10 +18,10 @@ class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
      *
      * @return array
      */
-    public function getAllForSelect()
+    public function allForSelect()
     {
         $categories = $this->make(['translations'])
-            ->whereHasOnlineTranslation()
+            ->online()
             ->order()
             ->get()
             ->lists('title', 'id');
@@ -35,9 +35,9 @@ class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
      * @param  string $uri
      * @return Collection
      */
-    public function getAllForMenu($uri = '')
+    public function allForMenu($uri = '')
     {
-        $categories = $this->getAll();
+        $categories = $this->all();
         $categories->each(function ($category) use ($uri) {
             $category->uri = $uri . '/' . $category->slug;
         });

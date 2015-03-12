@@ -12,7 +12,7 @@ interface CategoryInterface extends RepositoryInterface
      *
      * @return array
      */
-    public function getAllForSelect();
+    public function allForSelect();
 
     /**
      * Get all categories and prepare for menu
@@ -20,5 +20,5 @@ interface CategoryInterface extends RepositoryInterface
      * @param  string $uri
      * @return Collection
      */
-    public function getAllForMenu($uri = '');
+    public function allForMenu($uri = '');
 }

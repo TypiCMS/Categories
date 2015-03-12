@@ -20,9 +20,9 @@ class CacheDecorator extends CacheAbstractDecorator implements CategoryInterface
      *
      * @return array
      */
-    public function getAllForSelect()
+    public function allForSelect()
     {
-        return $this->repo->getAllForSelect();
+        return $this->repo->allForSelect();
     }
 
     /**
@@ -31,16 +31,16 @@ class CacheDecorator extends CacheAbstractDecorator implements CategoryInterface
      * @param  string $uri
      * @return Collection
      */
-    public function getAllForMenu($uri = '')
+    public function allForMenu($uri = '')
     {
-        $cacheKey = md5(App::getLocale() . 'getAllForMenu' . $uri);
+        $cacheKey = md5(App::getLocale() . 'allForMenu' . $uri);
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
         }
 
         // Item not cached, retrieve it
-        $models = $this->repo->getAllForMenu($uri);
+        $models = $this->repo->allForMenu($uri);
 
         // Store in cache for next request
         $this->cache->put($cacheKey, $models);

@@ -21,7 +21,7 @@ class PublicController extends BasePublicController
      */
     public function index()
     {
-        $models = $this->repository->getAll();
+        $models = $this->repository->all();
         return view('categories::public.index')
             ->with(compact('models'));
     }
