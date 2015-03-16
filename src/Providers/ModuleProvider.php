@@ -65,7 +65,7 @@ class ModuleProvider extends ServiceProvider
 
         $app->bind('TypiCMS\Modules\Categories\Repositories\CategoryInterface', function (Application $app) {
             $repository = new EloquentCategory(new Category);
-            if (! Config::get('app.cache')) {
+            if (! config('typicms.cache')) {
                 return $repository;
             }
             $laravelCache = new LaravelCache($app['cache'], 'categories', 10);
