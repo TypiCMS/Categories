@@ -2,11 +2,11 @@
 namespace TypiCMS\Modules\Categories\Models;
 
 use App;
-use Route;
 use Dimsav\Translatable\Translatable;
+use Route;
 use TypiCMS\Models\Base;
+use TypiCMS\Modules\History\Traits\Historable;
 use TypiCMS\Presenters\PresentableTrait;
-use TypiCMS\Traits\Historable;
 
 class Category extends Base
 {
