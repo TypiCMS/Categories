@@ -39,7 +39,7 @@ class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
     {
         $categories = $this->all();
         $categories->each(function ($category) use ($uri) {
-            $category->uri = $uri . '/' . $category->slug;
+            $category->url = $uri . '/' . $category->slug;
         });
         return $categories;
     }
