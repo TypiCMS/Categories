@@ -1,19 +1,16 @@
 <?php
 namespace TypiCMS\Modules\Categories\Providers;
 
-use Config;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Lang;
 use TypiCMS\Modules\Categories\Models\Category;
 use TypiCMS\Modules\Categories\Models\CategoryTranslation;
 use TypiCMS\Modules\Categories\Repositories\CacheDecorator;
 use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
-use TypiCMS\Observers\FileObserver;
-use TypiCMS\Observers\SlugObserver;
-use TypiCMS\Services\Cache\LaravelCache;
-use View;
+use TypiCMS\Modules\Core\Observers\FileObserver;
+use TypiCMS\Modules\Core\Observers\SlugObserver;
+use TypiCMS\Modules\Core\Services\Cache\LaravelCache;
 
 class ModuleProvider extends ServiceProvider
 {

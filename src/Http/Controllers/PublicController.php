@@ -3,7 +3,7 @@ namespace TypiCMS\Modules\Categories\Http\Controllers;
 
 use Illuminate\Support\Str;
 use View;
-use TypiCMS\Http\Controllers\BasePublicController;
+use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
 use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
 
 class PublicController extends BasePublicController
