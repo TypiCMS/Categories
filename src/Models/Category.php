@@ -1,12 +1,10 @@
 <?php
 namespace TypiCMS\Modules\Categories\Models;
 
-use App;
 use Dimsav\Translatable\Translatable;
-use Route;
+use Laracasts\Presenter\PresentableTrait;
 use TypiCMS\Models\Base;
 use TypiCMS\Modules\History\Traits\Historable;
-use TypiCMS\Presenters\PresentableTrait;
 
 class Category extends Base
 {
