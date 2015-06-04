@@ -1,10 +1,8 @@
 <?php
 namespace TypiCMS\Modules\Categories\Http\Controllers;
 
-use Illuminate\Support\Str;
-use View;
-use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
 use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
+use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
 
 class PublicController extends BasePublicController
 {
@@ -17,7 +15,7 @@ class PublicController extends BasePublicController
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function index()
     {
@@ -29,7 +27,7 @@ class PublicController extends BasePublicController
     /**
      * Show resource.
      *
-     * @return Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function show($category = null, $slug = null)
     {
