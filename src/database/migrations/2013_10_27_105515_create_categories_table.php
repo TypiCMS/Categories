@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCategoriesTable extends Migration
 {
@@ -39,7 +39,7 @@ class CreateCategoriesTable extends Migration
 
             $table->timestamps();
 
-            $table->unique(array('category_id', 'locale'));
+            $table->unique(['category_id', 'locale']);
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
         });
@@ -55,5 +55,4 @@ class CreateCategoriesTable extends Migration
         Schema::drop('category_translations');
         Schema::drop('categories');
     }
-
 }
