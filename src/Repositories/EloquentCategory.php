@@ -1,4 +1,5 @@
 <?php
+
 namespace TypiCMS\Modules\Categories\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
@@ -7,14 +8,13 @@ use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 
 class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
 {
-
     public function __construct(Model $model)
     {
         $this->model = $model;
     }
 
     /**
-     * Get all categories for select/option
+     * Get all categories for select/option.
      *
      * @return array
      */
@@ -31,17 +31,19 @@ class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
     }
 
     /**
-     * Get all categories and prepare for menu
+     * Get all categories and prepare for menu.
      *
-     * @param  string $uri
+     * @param string $uri
+     *
      * @return Collection
      */
     public function allForMenu($uri = '')
     {
         $categories = $this->all();
         $categories->each(function ($category) use ($uri) {
-            $category->url = $uri . '/' . $category->slug;
+            $category->url = $uri.'/'.$category->slug;
         });
+
         return $categories;
     }
 }

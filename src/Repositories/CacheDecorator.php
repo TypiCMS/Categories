@@ -1,4 +1,5 @@
 <?php
+
 namespace TypiCMS\Modules\Categories\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
@@ -7,7 +8,6 @@ use TypiCMS\Modules\Core\Services\Cache\CacheInterface;
 
 class CacheDecorator extends CacheAbstractDecorator implements CategoryInterface
 {
-
     public function __construct(CategoryInterface $repo, CacheInterface $cache)
     {
         $this->repo = $repo;
@@ -15,7 +15,7 @@ class CacheDecorator extends CacheAbstractDecorator implements CategoryInterface
     }
 
     /**
-     * Get all categories for select/option
+     * Get all categories for select/option.
      *
      * @return array
      */
@@ -25,14 +25,15 @@ class CacheDecorator extends CacheAbstractDecorator implements CategoryInterface
     }
 
     /**
-     * Get all categories and prepare for menu
+     * Get all categories and prepare for menu.
      *
-     * @param  string $uri
+     * @param string $uri
+     *
      * @return Collection
      */
     public function allForMenu($uri = '')
     {
-        $cacheKey = md5(config('app.locale') . 'allForMenu' . $uri);
+        $cacheKey = md5(config('app.locale').'allForMenu'.$uri);
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
