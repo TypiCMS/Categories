@@ -24,7 +24,7 @@ class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
             ->online()
             ->order()
             ->get()
-            ->lists('title', 'id')
+            ->pluck('title', 'id')
             ->all();
 
         return ['' => ''] + $categories;
