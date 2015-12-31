@@ -15,7 +15,7 @@ class PublicController extends BasePublicController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Support\Facades\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
