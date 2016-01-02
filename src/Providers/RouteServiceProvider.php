@@ -18,28 +18,6 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'TypiCMS\Modules\Categories\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
-     *
-     * @return void
-     */
-    public function boot(Router $router)
-    {
-        parent::boot($router);
-
-        if (Request::segment(1) != 'admin' && Request::segment(1) != 'api') {
-            $router->bind('categories', function ($slug) {
-                $repository = app('TypiCMS\Modules\Categories\Repositories\CategoryInterface');
-
-                return $repository->bySlug($slug);
-            });
-        } else {
-            $router->model('categories', 'TypiCMS\Modules\Categories\Models\Category');
-        }
-    }
-
-    /**
      * Define the routes for the application.
      *
      * @param \Illuminate\Routing\Router $router
@@ -52,13 +30,19 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Admin routes
              */
-            $router->resource('admin/categories', 'AdminController');
+            $router->get('admin/categories', ['as' => 'admin.categories.index', 'uses' => 'AdminController@index']);
+            $router->get('admin/categories/create', ['as' => 'admin.categories.create', 'uses' => 'AdminController@create']);
+            $router->get('admin/categories/{category}/edit', ['as' => 'admin.categories.edit', 'uses' => 'AdminController@edit']);
+            $router->post('admin/categories', ['as' => 'admin.categories.store', 'uses' => 'AdminController@store']);
+            $router->put('admin/categories/{category}', ['as' => 'admin.categories.update', 'uses' => 'AdminController@update']);
             $router->post('admin/categories/sort', ['as' => 'admin.categories.sort', 'uses' => 'AdminController@sort']);
 
             /*
              * API routes
              */
-            $router->resource('api/categories', 'ApiController');
+            $router->get('api/categories', ['as' => 'api.categories.index', 'uses' => 'ApiController@index']);
+            $router->put('api/categories/{category}', ['as' => 'api.categories.update', 'uses' => 'ApiController@update']);
+            $router->delete('api/categories/{category}', ['as' => 'api.categories.destroy', 'uses' => 'ApiController@destroy']);
         });
     }
 }
