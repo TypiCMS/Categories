@@ -4,7 +4,6 @@ namespace TypiCMS\Modules\Categories\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Request;
 
 class RouteServiceProvider extends ServiceProvider
 {
