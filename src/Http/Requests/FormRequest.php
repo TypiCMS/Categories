@@ -8,19 +8,10 @@ class FormRequest extends AbstractFormRequest
 {
     public function rules()
     {
-        $rules = [
-            'image' => 'image|max:2000',
+        return [
+            'image'   => 'image|max:2000',
+            '*.title' => 'max:255',
+            '*.slug'  => 'alpha_dash|max:255',
         ];
-        foreach (config('translatable.locales') as $locale) {
-            $rules[$locale.'.slug'] = [
-                'required_with:'.$locale.'.title',
-                'required_if:'.$locale.'.status,1',
-                'alpha_dash',
-                'max:255',
-            ];
-            $rules[$locale.'.title'] = 'max:255';
-        }
-
-        return $rules;
     }
 }
