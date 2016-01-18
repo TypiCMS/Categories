@@ -14,34 +14,24 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
-
             $table->string('image')->nullable();
-
             $table->integer('position')->unsigned()->default(0);
-
             $table->timestamps();
         });
 
         Schema::create('category_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-
             $table->string('locale')->index();
-
             $table->boolean('status')->default(0);
-
             $table->string('title');
             $table->string('slug')->nullable();
-
             $table->timestamps();
-
             $table->unique(['category_id', 'locale']);
+            $table->unique(['locale', 'slug']);
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-
         });
     }
 
