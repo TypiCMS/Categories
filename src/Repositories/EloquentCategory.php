@@ -20,7 +20,7 @@ class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
      */
     public function allForSelect()
     {
-        $categories = $this->make(['translations'])
+        $categories = $this->make()
             ->order()
             ->get()
             ->pluck('title', 'id')
