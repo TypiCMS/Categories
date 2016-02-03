@@ -21,7 +21,8 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function boot(Router $router)
@@ -30,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         if (Request::segment(1) != 'admin' && Request::segment(1) != 'api') {
             $router->bind('category', function ($slug) {
                 $repository = app(CategoryInterface::class);
+
                 return $repository->bySlug($slug);
             });
         }
