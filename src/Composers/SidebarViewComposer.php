@@ -5,9 +5,8 @@ namespace TypiCMS\Modules\Categories\Composers;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Sidebar\SidebarGroup;
 use Maatwebsite\Sidebar\SidebarItem;
-use TypiCMS\Modules\Core\Composers\BaseSidebarViewComposer;
 
-class SidebarViewComposer extends BaseSidebarViewComposer
+class SidebarViewComposer
 {
     public function compose(View $view)
     {
@@ -15,10 +14,10 @@ class SidebarViewComposer extends BaseSidebarViewComposer
             $group->addItem(trans('categories::global.name'), function (SidebarItem $item) {
                 $item->icon = config('typicms.categories.sidebar.icon', 'icon fa fa-fw fa-list-ul');
                 $item->weight = config('typicms.categories.sidebar.weight');
-                $item->route('admin.categories.index');
-                $item->append('admin.categories.create');
+                $item->route('admin::index-categories');
+                $item->append('admin::create-categories');
                 $item->authorize(
-                    $this->auth->hasAccess('categories.index')
+                    auth()->user()->can('index-categories')
                 );
             });
         });
