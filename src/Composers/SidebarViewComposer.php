@@ -3,6 +3,7 @@
 namespace TypiCMS\Modules\Categories\Composers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Gate;
 use Maatwebsite\Sidebar\SidebarGroup;
 use Maatwebsite\Sidebar\SidebarItem;
 
@@ -17,7 +18,7 @@ class SidebarViewComposer
                 $item->route('admin::index-categories');
                 $item->append('admin::create-categories');
                 $item->authorize(
-                    auth()->user()->can('index-categories')
+                    Gate::allows('index-categories')
                 );
             });
         });
