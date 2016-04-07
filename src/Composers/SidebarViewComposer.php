@@ -16,7 +16,7 @@ class SidebarViewComposer
                 $item->icon = config('typicms.categories.sidebar.icon', 'icon fa fa-fw fa-list-ul');
                 $item->weight = config('typicms.categories.sidebar.weight');
                 $item->route('admin::index-categories');
-                $item->append('admin::create-categories');
+                $item->append('admin::create-category');
                 $item->authorize(
                     Gate::allows('index-categories')
                 );
