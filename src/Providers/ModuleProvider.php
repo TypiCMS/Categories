@@ -6,7 +6,6 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use TypiCMS\Modules\Categories\Models\Category;
-use TypiCMS\Modules\Categories\Models\CategoryTranslation;
 use TypiCMS\Modules\Categories\Repositories\CacheDecorator;
 use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
 use TypiCMS\Modules\Core\Observers\FileObserver;
