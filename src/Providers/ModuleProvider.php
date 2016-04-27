@@ -40,7 +40,7 @@ class ModuleProvider extends ServiceProvider
         );
 
         // Observers
-        CategoryTranslation::observe(new SlugObserver());
+        Category::observe(new SlugObserver());
         Category::observe(new FileObserver());
     }
 
