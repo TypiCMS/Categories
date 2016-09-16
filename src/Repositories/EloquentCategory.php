@@ -4,6 +4,7 @@ namespace TypiCMS\Modules\Categories\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
 use TypiCMS\Modules\Categories\Models\Category;
+use TypiCMS\Modules\Core\EloquentRepository;
 
 class EloquentCategory extends EloquentRepository
 {
