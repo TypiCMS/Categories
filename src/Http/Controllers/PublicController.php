@@ -2,12 +2,12 @@
 
 namespace TypiCMS\Modules\Categories\Http\Controllers;
 
-use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
+use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
 use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
 
 class PublicController extends BasePublicController
 {
-    public function __construct(CategoryInterface $category)
+    public function __construct(EloquentCategory $category)
     {
         parent::__construct($category);
     }

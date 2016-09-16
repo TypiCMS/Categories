@@ -3,15 +3,13 @@
 namespace TypiCMS\Modules\Categories\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
-use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Categories\Models\Category;
 
-class EloquentCategory extends RepositoriesAbstract implements CategoryInterface
+class EloquentCategory extends EloquentRepository
 {
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    protected $repositoryId = 'categories';
+
+    protected $model = Category::class;
 
     /**
      * Get all categories for select/option.

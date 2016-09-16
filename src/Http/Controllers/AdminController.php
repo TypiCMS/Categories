@@ -4,12 +4,12 @@ namespace TypiCMS\Modules\Categories\Http\Controllers;
 
 use TypiCMS\Modules\Categories\Http\Requests\FormRequest;
 use TypiCMS\Modules\Categories\Models\Category;
-use TypiCMS\Modules\Categories\Repositories\CategoryInterface;
+use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
 
 class AdminController extends BaseAdminController
 {
-    public function __construct(CategoryInterface $category)
+    public function __construct(EloquentCategory $category)
     {
         parent::__construct($category);
     }

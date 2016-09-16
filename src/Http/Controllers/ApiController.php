@@ -4,7 +4,7 @@ namespace TypiCMS\Modules\Categories\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
 use TypiCMS\Modules\Categories\Models\Category;
-use TypiCMS\Modules\Categories\Repositories\CategoryInterface as Repository;
+use TypiCMS\Modules\Categories\Repositories\EloquentCategory as Repository;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 
 class ApiController extends BaseApiController

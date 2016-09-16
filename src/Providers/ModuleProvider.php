@@ -6,11 +6,9 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use TypiCMS\Modules\Categories\Models\Category;
-use TypiCMS\Modules\Categories\Repositories\CacheDecorator;
 use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
 use TypiCMS\Modules\Core\Observers\FileObserver;
 use TypiCMS\Modules\Core\Observers\SlugObserver;
-use TypiCMS\Modules\Core\Services\Cache\LaravelCache;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -57,14 +55,6 @@ class ModuleProvider extends ServiceProvider
          */
         $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Categories\Composers\SidebarViewComposer');
 
-        $app->bind('TypiCMS\Modules\Categories\Repositories\CategoryInterface', function (Application $app) {
-            $repository = new EloquentCategory(new Category());
-            if (!config('typicms.cache')) {
-                return $repository;
-            }
-            $laravelCache = new LaravelCache($app['cache'], 'categories', 10);
-
-            return new CacheDecorator($repository, $laravelCache);
-        });
+        $app->bind('Categories', EloquentCategory::class);
     }
 }
