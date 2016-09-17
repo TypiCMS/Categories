@@ -19,7 +19,7 @@ class PublicController extends BasePublicController
      */
     public function index()
     {
-        $models = $this->repository->all();
+        $models = $this->repository->published()->findAll();
 
         return view('categories::public.index')
             ->with(compact('models'));
@@ -32,7 +32,7 @@ class PublicController extends BasePublicController
      */
     public function show($category = null, $slug = null)
     {
-        $model = $this->repository->bySlug($slug);
+        $model = $this->repository->published()->bySlug($slug);
 
         return view('categories::public.show')
             ->with(compact('model'));
