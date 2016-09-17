@@ -7,7 +7,6 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use TypiCMS\Modules\Categories\Facades\Categories;
-use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
 
 class RouteServiceProvider extends ServiceProvider
 {
