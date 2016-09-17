@@ -4,9 +4,9 @@ namespace TypiCMS\Modules\Categories\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Categories\Repositories\EloquentCategory;
+use Illuminate\Support\Facades\Route;
+use TypiCMS\Modules\Categories\Facades\Categories;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -29,9 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
         if (Request::segment(1) != 'admin' && Request::segment(1) != 'api') {
             Route::bind('category', function ($slug) {
-                $repository = app(CategoryInterface::class);
-
-                return $repository->bySlug($slug);
+                return Categories::bySlug($slug);
             });
         }
     }
