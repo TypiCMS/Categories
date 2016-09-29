@@ -45,7 +45,7 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Admin routes
              */
-            $router->group(['middleware' => 'admin', 'prefix' => 'admin'], function(Router $router) {
+            $router->group(['middleware' => 'admin', 'prefix' => 'admin'], function (Router $router) {
                 $router->get('categories', 'AdminController@index')->name('admin::index-categories');
                 $router->get('categories/create', 'AdminController@create')->name('admin::create-category');
                 $router->get('categories/{category}/edit', 'AdminController@edit')->name('admin::edit-category');
@@ -57,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * API routes
              */
-            $router->group(['middleware' => 'api', 'prefix' => 'api'], function(Router $router) {
+            $router->group(['middleware' => 'api', 'prefix' => 'api'], function (Router $router) {
                 $router->get('categories', 'ApiController@index')->name('api::index-categories');
                 $router->put('categories/{category}', 'ApiController@update')->name('api::update-category');
                 $router->delete('categories/{category}', 'ApiController@destroy')->name('api::destroy-category');
