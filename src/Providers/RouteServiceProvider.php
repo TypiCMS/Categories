@@ -45,19 +45,23 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Admin routes
              */
-            $router->get('admin/categories', 'AdminController@index')->name('admin::index-categories');
-            $router->get('admin/categories/create', 'AdminController@create')->name('admin::create-category');
-            $router->get('admin/categories/{category}/edit', 'AdminController@edit')->name('admin::edit-category');
-            $router->post('admin/categories', 'AdminController@store')->name('admin::store-category');
-            $router->put('admin/categories/{category}', 'AdminController@update')->name('admin::update-category');
-            $router->post('admin/categories/sort', 'AdminController@sort')->name('admin::sort-categories');
+            $router->group(['middleware' => 'admin', 'prefix' => 'admin'], function(Router $router) {
+                $router->get('categories', 'AdminController@index')->name('admin::index-categories');
+                $router->get('categories/create', 'AdminController@create')->name('admin::create-category');
+                $router->get('categories/{category}/edit', 'AdminController@edit')->name('admin::edit-category');
+                $router->post('categories', 'AdminController@store')->name('admin::store-category');
+                $router->put('categories/{category}', 'AdminController@update')->name('admin::update-category');
+                $router->post('categories/sort', 'AdminController@sort')->name('admin::sort-categories');
+            });
 
             /*
              * API routes
              */
-            $router->get('api/categories', 'ApiController@index')->name('api::index-categories');
-            $router->put('api/categories/{category}', 'ApiController@update')->name('api::update-category');
-            $router->delete('api/categories/{category}', 'ApiController@destroy')->name('api::destroy-category');
+            $router->group(['middleware' => 'api', 'prefix' => 'api'], function(Router $router) {
+                $router->get('categories', 'ApiController@index')->name('api::index-categories');
+                $router->put('categories/{category}', 'ApiController@update')->name('api::update-category');
+                $router->delete('categories/{category}', 'ApiController@destroy')->name('api::destroy-category');
+            });
         });
     }
 }
