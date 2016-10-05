@@ -52,15 +52,8 @@ class RouteServiceProvider extends ServiceProvider
                 $router->post('categories', 'AdminController@store')->name('admin::store-category');
                 $router->put('categories/{category}', 'AdminController@update')->name('admin::update-category');
                 $router->post('categories/sort', 'AdminController@sort')->name('admin::sort-categories');
-            });
-
-            /*
-             * API routes
-             */
-            $router->group(['middleware' => 'api', 'prefix' => 'api'], function (Router $router) {
-                $router->get('categories', 'ApiController@index')->name('api::index-categories');
-                $router->put('categories/{category}', 'ApiController@update')->name('api::update-category');
-                $router->delete('categories/{category}', 'ApiController@destroy')->name('api::destroy-category');
+                $router->patch('categories/{category}', 'AdminController@ajaxUpdate');
+                $router->delete('categories/{category}', 'AdminController@destroy')->name('admin::destroy-category');
             });
         });
     }

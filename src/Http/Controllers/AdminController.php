@@ -77,8 +77,24 @@ class AdminController extends BaseAdminController
      */
     public function update(Category $category, FormRequest $request)
     {
-        $this->repository->update(request('id'), $request->all());
+        $this->repository->update($request->id, $request->all());
 
         return $this->redirect($request, $category);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \TypiCMS\Modules\Categories\Models\Category $category
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Category $category)
+    {
+        $deleted = $this->repository->delete($category);
+
+        return response()->json([
+            'error' => !$deleted,
+        ]);
     }
 }
