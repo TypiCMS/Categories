@@ -6,6 +6,13 @@ use TypiCMS\Modules\Core\Models\BaseTranslation;
 
 class CategoryTranslation extends BaseTranslation
 {
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'status',
+    ];
+
     /**
      * get the parent model.
      */
