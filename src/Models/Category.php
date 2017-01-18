@@ -6,6 +6,7 @@ use Laracasts\Presenter\PresentableTrait;
 use Spatie\Translatable\HasTranslations;
 use TypiCMS\Modules\Core\Models\Base;
 use TypiCMS\Modules\History\Traits\Historable;
+use TypiCMS\Modules\Projects\Models\Project;
 
 class Category extends Base
 {
@@ -31,7 +32,7 @@ class Category extends Base
 
     public function projects()
     {
-        return $this->hasMany('TypiCMS\Modules\Projects\Models\Project')->order();
+        return $this->hasMany(Project::class)->order();
     }
 
     /**
