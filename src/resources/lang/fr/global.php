@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'name'       => 'Catégories',
+    'name' => 'Catégories',
     'categories' => 'catégorie|catégories',
-    'New'        => 'Nouvelle catégorie',
-    'Edit'       => 'Modifier la catégorie',
-    'Back'       => 'Retour à la liste des catégories',
+    'New' => 'Nouvelle catégorie',
+    'Edit' => 'Modifier la catégorie',
+    'Back' => 'Retour à la liste des catégories',
 ];
