@@ -1,6 +1,6 @@
 @extends('core::admin.master')
 
-@section('title', trans('categories::global.name'))
+@section('title', __('categories::global.name'))
 
 @section('main')
 

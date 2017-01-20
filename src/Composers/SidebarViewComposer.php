@@ -11,8 +11,8 @@ class SidebarViewComposer
 {
     public function compose(View $view)
     {
-        $view->sidebar->group(trans('global.menus.content'), function (SidebarGroup $group) {
-            $group->addItem(trans('categories::global.name'), function (SidebarItem $item) {
+        $view->sidebar->group(__('global.menus.content'), function (SidebarGroup $group) {
+            $group->addItem(__('categories::global.name'), function (SidebarItem $item) {
                 $item->id = 'categories';
                 $item->icon = config('typicms.categories.sidebar.icon', 'icon fa fa-fw fa-list-ul');
                 $item->weight = config('typicms.categories.sidebar.weight');

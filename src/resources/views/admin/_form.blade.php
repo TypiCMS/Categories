@@ -6,4 +6,4 @@
 
 @include('core::form._title-and-slug')
 {!! TranslatableBootForm::hidden('status')->value(0) !!}
-{!! TranslatableBootForm::checkbox(trans('validation.attributes.online'), 'status') !!}
+{!! TranslatableBootForm::checkbox(__('validation.attributes.online'), 'status') !!}
