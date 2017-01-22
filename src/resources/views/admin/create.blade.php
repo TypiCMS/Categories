@@ -2,7 +2,7 @@
 
 @section('title', __('categories::global.New'))
 
-@section('main')
+@section('content')
 
     @include('core::admin._button-back', ['module' => 'categories'])
     <h1>
