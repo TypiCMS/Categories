@@ -4,9 +4,7 @@ namespace TypiCMS\Modules\Categories\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
-use TypiCMS\Modules\Categories\Facades\Categories;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -18,21 +16,6 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'TypiCMS\Modules\Categories\Http\Controllers';
-
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return null
-     */
-    public function boot()
-    {
-        parent::boot();
-        if (Request::segment(1) != 'admin' && Request::segment(1) != 'api') {
-            Route::bind('category', function ($slug) {
-                return Categories::bySlug($slug);
-            });
-        }
-    }
 
     /**
      * Define the routes for the application.
